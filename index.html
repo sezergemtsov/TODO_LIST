@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TODO LIST</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+    <script>
+    var myTask = "new Task";
+
+  function createTableElement(value, id) {
+
+    var myTable = document.getElementById(id);
+
+    var newLine = document.createElement("tr");
+
+    var firstField = document.createElement("td");
+    firstField.innerHTML = myTask;
+
+    var secondField = document.createElement("td");
+
+    var selection = document.createElement("select");
+
+    var option1 = document.createElement("option");
+    option1.innerHTML = "Done";
+
+    var option2 = document.createElement("option");
+    option2.innerHTML = "In Process";
+
+    var option3 = document.createElement("option");
+    option3.innerHTML = "In Process";
+
+    selection.appendChild(option1);
+    selection.appendChild(option2);
+    selection.appendChild(option3);
+
+    secondField.appendChild(selection);
+
+    newLine.appendChild(firstField);
+    newLine.appendChild(secondField);
+
+   myTable.appendChild(newLine);
+
+  }
+
+    </script>
+</head>
+<body>
+
+<h2>TODO LIST!!</h2>
+
+<label>
+    <input id="input" class="field" type="text" value="Put new task here.." oninput="myTask=this.value">
+    <input class="button" type="submit" value="add" onclick="createTableElement('input', 'table')">
+</label>
+
+<table id = "table">
+    <tr>
+        <th class="field">Your tasks</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>task 1</td>
+        <td>
+            <select>
+                <option>Done</option>
+                <option>In Process</option>
+                <option>Waiting</option>
+            </select>
+
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

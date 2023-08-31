@@ -1,0 +1,44 @@
+h2 {
+  color: blue;
+  text-align: center;
+  font-family: "Audiowide";
+}
+
+p {
+  color:tomato;
+  text-align: center;
+  font-family: Arial;
+}
+
+table {
+  margin-top:15px;
+  font-family: Arial small-caps;
+  width: 100%;
+  border-style: solid;
+  border-width: 3px;
+  border-color: gray;
+  border-radius: 5px;
+  background-color:tomato;
+  color: white;
+}
+
+td {
+  background-color:gray;
+  color: white;
+  text-align: center;
+}
+
+.field {
+width:78%;
+}
+
+.button {
+width: 18%;
+float: right;
+}
+
+select{
+  background-color:gray;
+  color: white;
+  text-align: center;
+}
