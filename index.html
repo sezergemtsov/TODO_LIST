@@ -2,15 +2,26 @@
 <html>
     <head>
         <title>TODO LIST</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+        <script src="addTask.js"></script>
       </head>
 <body>
 
-<h2>TODO LIST</h2>
+  <h2>TODO LIST!!</h2>
 
-<p>Add your task here to save it</p>
+  <label>
+      <input id="input" class="field" type="text" value="Put new task here.." oninput="myTask=this.value">
+      <input class="button" type="submit" value="add" onclick="createTableElement('input', 'table')">
+  </label>
 
-<p>here will be list of tasks</p>
+  <table id="table">
+      <tr>
+          <th class="field">Your tasks</th>
+          <th>Status</th>
+      </tr>
+  </table>
 
 </body>
 </html>
