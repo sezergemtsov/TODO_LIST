@@ -14,13 +14,13 @@ function createTableElement(value, id) {
     var selection = document.createElement("select");
 
     var option1 = document.createElement("option");
-    option1.innerHTML = "Done";
+    option1.innerHTML = "Waiting";
 
     var option2 = document.createElement("option");
     option2.innerHTML = "In Process";
 
     var option3 = document.createElement("option");
-    option3.innerHTML = "In Process";
+    option3.innerHTML = "Done";
 
     selection.appendChild(option1);
     selection.appendChild(option2);
