@@ -1,4 +1,5 @@
 var myTask = "new Task";
+var editedTask;
 
 function createTableElement(value, id) {
 
@@ -34,35 +35,64 @@ function createTableElement(value, id) {
 
     secondField.appendChild(selection);
 
+    var edit_field = document.createElement("td");
+    var edit_input = document.createElement("input");
+    edit_input.type = "submit";
+    edit_input.value = "Edit";
+    edit_input.onclick = editing;
+    edit_field.appendChild(edit_input);
+    
+
     newLine.appendChild(firstField);
     newLine.appendChild(secondField);
+    newLine.appendChild(edit_field);
 
     myTable.appendChild(newLine);
 
-    selection.addEventListener('change', () => changeColor(selection));
+    selection.addEventListener('change', () => changeColorTable(selection));
 
 }
 
-function changeColor(element){
-    var selection = element;
-    var column = element.parentNode;
-    var firstColumn = element.parentNode.parentNode.childNodes[0];
-    selection.classList.remove("line_wait", "line_done", "line_progress");
-    column.classList.remove("line_wait", "line_done", "line_progress");
-    firstColumn.classList.remove("line_wait", "line_done", "line_progress");
-    var option = selection.value;
-    console.log(option);
-    if(option==='1'){
-        selection.classList.add("line_wait");
-        column.classList.add("line_wait");
-        firstColumn.classList.add("line_wait");
-    } else if(option==='2') {
-        selection.classList.add("line_progress");
-        column.classList.add("line_progress");
-        firstColumn.classList.add("line_progress");
-    } else if(option==='3'){
-        selection.classList.add("line_done");
-        column.classList.add("line_done");
-        firstColumn.classList.add("line_done");
+function changeColorTable(element){
+    var columns = Array.from(element.parentNode.parentNode.childNodes);
+    columns.push(element);
+    columns.forEach(elem => {
+        elem.classList.remove("line_wait", "line_done", "line_progress");
+    });
+    if(element.value==='1'){
+        columns.forEach(v => {v.classList.add("line_wait");});
+    } else if (element.value==='2'){
+        columns.forEach(v => {v.classList.add("line_progress");});
+    } else if (element.value==='3'){
+        columns.forEach(v => {v.classList.add("line_done");});
     }
+}
+
+function editing(){
+    console.log(this.parentNode.parentNode.childNodes[0].innerHTML);
+    var task = this.parentNode.parentNode.childNodes[0];
+    var string = task.innerHTML;
+    var input = document.createElement("input");
+    input.type = "text";
+    input.value = string;
+    input.classList.add("field");
+    input.oninput = changeTask;
+    var save = document.createElement("input");
+    save.type = "submit";
+    save.value = "save";
+    save.classList.add("button");
+    save.onclick = completeEditing;
+    task.innerHTML = "";
+    task.appendChild(input);
+    task.appendChild(save);
+}
+
+function completeEditing(){
+    var cell = this.parentNode;
+    var string = myTask;
+}
+
+function changeTask(){
+    this.innerHTML = this.value;
+    console.log(this.value);
 }
