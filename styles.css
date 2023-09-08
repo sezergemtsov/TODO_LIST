@@ -29,12 +29,18 @@ td {
 }
 
 .field {
-width:78%;
+width:88%;
 }
 
 .button {
-width: 18%;
+width: 10%;
 float: right;
+border-radius: 5px;
+}
+
+.b1 {
+  border-radius: 5px;
+  border-color: black;
 }
 
 select{

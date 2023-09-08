@@ -40,6 +40,7 @@ function createTableElement(value, id) {
     var edit_input = document.createElement("input");
     edit_input.type = "submit";
     edit_input.value = "Edit";
+    edit_input.classList.add("b1");
     edit_input.onclick = editing;
     edit_field.appendChild(edit_input);
     
@@ -85,6 +86,7 @@ function editing(){
         save.value = "save";
         save.classList.add("button");
         save.onclick = completeEditing;
+        editedTask = task.innerHTML;   
         task.innerHTML = "";
         task.appendChild(input);
         task.appendChild(save);
