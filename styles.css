@@ -6,6 +6,10 @@ h2 {
 
 body {
   background-image: url("todo.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+  width:100%;
+  background-color: rgb(185, 183, 166);
   }
 
 p {
