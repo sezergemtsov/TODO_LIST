@@ -1,5 +1,6 @@
 var myTask = "new Task";
 var editedTask;
+var isEdited = "false";
 
 function createTableElement(value, id) {
 
@@ -69,30 +70,41 @@ function changeColorTable(element){
 }
 
 function editing(){
-    console.log(this.parentNode.parentNode.childNodes[0].innerHTML);
-    var task = this.parentNode.parentNode.childNodes[0];
-    var string = task.innerHTML;
-    var input = document.createElement("input");
-    input.type = "text";
-    input.value = string;
-    input.classList.add("field");
-    input.oninput = changeTask;
-    var save = document.createElement("input");
-    save.type = "submit";
-    save.value = "save";
-    save.classList.add("button");
-    save.onclick = completeEditing;
-    task.innerHTML = "";
-    task.appendChild(input);
-    task.appendChild(save);
+    if(isEdited==="false"){
+        isEdited="true";
+        console.log(this.parentNode.parentNode.childNodes[0].innerHTML);
+        var task = this.parentNode.parentNode.childNodes[0];
+        var string = task.innerHTML;
+        var input = document.createElement("input");
+        input.type = "text";
+        input.value = string;
+        input.classList.add("field");
+        input.oninput = changeTask;
+        var save = document.createElement("input");
+        save.type = "submit";
+        save.value = "save";
+        save.classList.add("button");
+        save.onclick = completeEditing;
+        task.innerHTML = "";
+        task.appendChild(input);
+        task.appendChild(save);
+    } else {
+        alert("Please complete editing in other fields first");
+    }
+
 }
 
 function completeEditing(){
-    var cell = this.parentNode;
-    var string = myTask;
+    if(isEdited==="true"){
+        var cell = this.parentNode;
+        cell.innerHTML = editedTask;
+        isEdited="false";
+    }
+
 }
 
 function changeTask(){
-    this.innerHTML = this.value;
-    console.log(this.value);
+    if(isEdited==="true"){
+        editedTask = this.value;
+    }
 }
