@@ -1,8 +1,12 @@
 h2 {
-  color: blue;
+  color: black;
   text-align: center;
   font-family: "Audiowide";
 }
+
+body {
+  background-image: url("todo.jpg");
+  }
 
 p {
   color:tomato;
