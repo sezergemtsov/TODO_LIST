@@ -9,54 +9,31 @@ function createTableElement(value, id) {
     var newLine = document.createElement("tr");
     newLine.id = Math.round(Math.random()*1000, 3)*1000 + Math.round(Math.random()*1000, 3);
 
-    var firstField = document.createElement("td");
-    firstField.innerHTML = myTask;
-
-    var secondField = document.createElement("td");
-
-    var selection = document.createElement("select");
-
-    console.log(selection.id);
-
-    var option1 = document.createElement("option");
-    option1.innerHTML = "Waiting";
-    option1.value = "1";
-
-    var option2 = document.createElement("option");
-    option2.innerHTML = "In Process";
-    option2.value = "2";
-
-    var option3 = document.createElement("option");
-    option3.innerHTML = "Done";
-    option3.value = "3";
-
-    selection.appendChild(option1);
-    selection.appendChild(option2);
-    selection.appendChild(option3);
-
-    secondField.appendChild(selection);
-
-    var edit_field = document.createElement("td");
-    var edit_input = document.createElement("input");
-    edit_input.type = "submit";
-    edit_input.value = "Edit";
-    edit_input.classList.add("b1");
-    edit_input.onclick = editing;
-    edit_field.appendChild(edit_input);
-    
-
-    newLine.appendChild(firstField);
-    newLine.appendChild(secondField);
-    newLine.appendChild(edit_field);
-
+	newLine.innerHTML = `
+        <td class="td1">${myTask}</td>
+        <td class="td2">
+            <select class="select">
+                <option value="1">Waiting</option>
+                <option value="2">In Process</option>
+                <option value="3">Done</option>
+            </select>
+        </td>
+        <td>
+            <button class="b1">Edit</button>
+        </td>
+	`;
     myTable.appendChild(newLine);
 
+    var edit_button = newLine.querySelector('.b1');
+    var selection = newLine.querySelector('.select');
+
+    edit_button.addEventListener('click', editing.bind(edit_button));
     selection.addEventListener('change', () => changeColorTable(selection));
 
 }
 
 function changeColorTable(element){
-    var columns = Array.from(element.parentNode.parentNode.childNodes);
+    var columns = Array.from(element.parentNode.parentNode.querySelectorAll('td'));
     columns.push(element);
     columns.forEach(elem => {
         elem.classList.remove("line_wait", "line_done", "line_progress");
@@ -74,7 +51,7 @@ function editing(){
     if(isEdited==="false"){
         isEdited="true";
         console.log(this.parentNode.parentNode.childNodes[0].innerHTML);
-        var task = this.parentNode.parentNode.childNodes[0];
+        var task = this.parentNode.parentNode.querySelector('td');
         var string = task.innerHTML;
         var input = document.createElement("input");
         input.type = "text";
@@ -86,7 +63,7 @@ function editing(){
         save.value = "save";
         save.classList.add("button");
         save.onclick = completeEditing;
-        editedTask = task.innerHTML;   
+        editedTask = task.innerHTML;
         task.innerHTML = "";
         task.appendChild(input);
         task.appendChild(save);
