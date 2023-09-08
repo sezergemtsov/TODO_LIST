@@ -16,9 +16,9 @@ table {
   width: 100%;
   border-style: solid;
   border-width: 3px;
-  border-color: gray;
+  border-color: rgb(122, 122, 122);
   border-radius: 5px;
-  background-color:tomato;
+  background-color:rgb(82, 55, 234);
   color: white;
 }
 
@@ -39,6 +39,24 @@ float: right;
 
 select{
   background-color:gray;
+  color: white;
+  text-align: center;
+}
+
+.line_wait {
+  background-color:gray;
+  color: white;
+  text-align: center;
+}
+
+.line_done {
+  background-color:rgb(56, 222, 62);
+  color: white;
+  text-align: center;
+}
+
+.line_progress {
+  background-color:rgb(56, 198, 242);
   color: white;
   text-align: center;
 }
